@@ -1,11 +1,9 @@
 const {Router} = require('express')
+const controller = require('./controllers/productsController')
 
 const routes = Router()
 
-routes.get("/", (request, response) => {
-  console.log('Teste')
-  response.send("aaaaaaaaaaa")
-})
+routes.post("/products", controller.createProduct)
 
 module.exports = {
   routes
