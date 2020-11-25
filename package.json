@@ -4,7 +4,8 @@
   "description": "<h1>Backend Analyst Candidate Testing</h1>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.16",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
   }
 }
