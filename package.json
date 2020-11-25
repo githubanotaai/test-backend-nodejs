@@ -1,0 +1,25 @@
+{
+  "name": "test-backend-nodejs",
+  "version": "1.0.0",
+  "description": "<h1>Backend Analyst Candidate Testing</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrei-Majada/test-backend-nodejs.git"
+  },
+  "author": "andrei majada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andrei-Majada/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/Andrei-Majada/test-backend-nodejs#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.16",
+    "morgan": "^1.10.0"
+  }
+}
