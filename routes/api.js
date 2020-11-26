@@ -45,13 +45,36 @@ router.post('/edit/:id', (req, res) => {
         res.json(data);
     })
     .catch(error => {
-        //console.log('Error: ', error)
+        console.log('Error: ', error)
         res.json(error);
     });
 })
 
-module.exports = router;
+router.delete('/delete/:id', (req, res) => {
+    console.log("req", req.body)
+    Product.deleteOne({_id:req.params.id})
+    .then(data => {
+        res.json('produto excluido com sucesso!');
+    })
+    .catch(error => {
+        console.log('Error: ', error)
+        res.json(error);
+    });
+})
 
+router.get('/searchName/:title', (req, res) => {
+
+    Product.find({title:req.params.title})
+        .then(data => {
+            console.log('Data: ', data);
+            res.json(data)
+        })
+        .catch(error => {
+            console.log('Error: ', error)
+        });
+});
+
+module.exports = router;
 
 //saving data to our mongoDB
 //const data = {
