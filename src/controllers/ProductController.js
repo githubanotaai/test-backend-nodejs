@@ -80,6 +80,20 @@ class ProductController {
         return res.send(productUpdated);
       }
 
+
+      async delete(req, res) {
+        const { productId } = req.params;
+
+        try{
+            await Product.findByIdAndDelete(productId);
+            return res.json({ message: 'Product exclude successful' });
+
+        }catch(err){
+            return res.status(400).json({ message: err });
+
+        }
+      }
+
 }
 
 export default ProductController;

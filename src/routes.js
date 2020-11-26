@@ -18,6 +18,7 @@ routes.get('/products', productController.index);
 routes.get('/products/:id', productController.show);
 routes.post('/products', productController.create);
 routes.put('/products/:productId', productController.update);
+routes.delete('/products/:productId', productController.delete);
 
 routes.get('/categories', categoryController.index);
 routes.get('/categories/:id', categoryController.show);
