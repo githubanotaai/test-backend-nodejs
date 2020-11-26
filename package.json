@@ -1,0 +1,28 @@
+{
+  "name": "anotaaidev",
+  "version": "1.0.0",
+  "description": "<h1>Backend Analyst Candidate Testing</h1>",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonardoSalmento/test-backend-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeonardoSalmento/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/LeonardoSalmento/test-backend-nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "sucrase": "^3.16.0"
+  }
+}
