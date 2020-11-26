@@ -8,8 +8,8 @@ class ProductController {
     }
 
     async show(req, res){
-        const { id } = req.params;
-        const product = await Product.findOne(id);
+        const { title } = req.params;
+        const product = await Product.findOne({title});
 
         if (!product) {
             return res.status(401).json({error: "Product not found!"})
