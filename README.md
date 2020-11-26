@@ -1,40 +1,89 @@
-<h1>Backend Analyst Candidate Testing</h1>
+## Project description :star:
+Developer APi for a catalog management application.
 
-Hello dear developer, in this test we will analyze your general knowledge and even speed of development. Below we will explain everything that will be needed.
-Do not be alarmed, we do not expect everyone to be able to complete all tasks, this test is the same presented for candidates of all experience levels, so do what you can without worry.
+## What you as a user can do :checkered_flag:
 
-<strong>The challenge</strong>
+:small_blue_diamond: Register, update and delete products.
 
-Your challenge is to develop an API, using Node.JS, for a product catalog management application. Thus, you must analyze and convert the user stories below into routes of an application.
- 
-<strong>User stories:</strong>
+:small_blue_diamond: Register, update and delete categories.
 
-- As a user I would like to register a product so that I can have access to the data of this product in the future (Title, description, price, category)
-- I as a user would like to be able to associate and edit a product category;
-- As a user I would like to be able to access the list of all products;
-- As a user I would like to be able to filter products by name or category;
-- I as a user would like to be able to update the product data;
-- I as a user would like to be able to delete a product from my catalog;
- 
-<strong>Instructions</strong>
-- <strong>To start the test, <strong>fork</strong> this repository, create a branch with its full name and then and send us the link to the test performed (link to your repository) . If you just clone the repository you will not be able to push and then it will be more complicated to make the pull request.</strong>
-- The choice of libraries, databases, architecture, etc. is at your discretion.
-- Change the README file explaining what it takes to run your application.
-- Paste the branch name into the GUPY system and indicate the completion of the test
-- If you want you can leave us feedback regarding the test
+:small_blue_diamond: Filter products by title.
 
- 
-<strong>Our analysis</strong>
-- Knowledge of Javascript, NodeJs, Express will be assessed for this position;
-- We'll look at how you structure the:
-  application layers;
-  outgoing calls,
-  environment variables,
-   cache,
-  unit tests,
-  logs;
-  error handling;
-  documentation.
-- Code organization, module separation, readability and comments.
-- Commit history.
-- The use of MongoDB is a differentiator
+:small_blue_diamond: Filter products by categories.
+
+## what you need
+
+[Node](https://nodejs.org/en/download/)
+
+[Yarn](https://yarnpkg.com/)
+
+## How to install 
+
+On terminal, clone the project: 
+
+```
+git clone https://github.com/LeonardoSalmento/test-backend-nodejs.git
+```
+
+get in the folder project:
+
+```
+cd test-backend-nodejs
+```
+
+Install dependencies:
+```
+yarn
+```
+or 
+
+```
+npm install
+```
+
+To create a file called ".env" and fill the variables below with information from your own database on mongoDb:
+
+DB_PASSWORD=**
+DB_NAME=**
+
+
+And execute o command:
+```
+yarn start
+```
+
+or 
+
+
+```
+npm start
+```
+
+The applycation is ready to run in http://localhost:3333/
+
+## Database
+
+As Database I used MongoDB.
+
+Were created scheemas below:
+
+### User
+
+name  | email  | password |created | updated
+------|--------|----------|--------|--------
+String|String|String|Date|Date
+
+### Product
+
+name|email|pawword|Category|created|updated
+----|-----|-------|--------|-------|-------
+String|String|String|Object|Date|Date
+
+### Category
+
+title|created|updated
+------|------|-------
+String|Date|Date
+
+
+
