@@ -94,6 +94,18 @@ class ProductController {
         }
       }
 
+      async showByCategory(req, res) {
+        const {categoryId} = req.params;
+        const category = Category.findById({id: categoryId});
+
+        if (!category){
+            return res.status(401).json({error: "Category not found!"})
+        }
+
+        const products = await Product.find({category: categoryId}).populate('category');
+        return res.json(products);
+      }
+
 }
 
 export default ProductController;
