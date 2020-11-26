@@ -3,7 +3,6 @@ import Category from '../models/Category';
 
 class ProductController {
     async index(req, res){
-        console.log("AAAA")
         const products = await Product.find();
         return res.json(products);
     }
@@ -41,6 +40,46 @@ class ProductController {
 
         return res.json(product);
     }
+
+
+    async update(req, res) {
+        const { productId } = req.params;
+        const {
+          title,
+          description,
+          price,
+          categoryId,
+        } = req.body;
+        
+        const category = await Category.findById(categoryId);
+        const product = await Product.findById(productId);
+        
+        if (!category){
+            return res.status(401).json({error: "Category not found!"})
+        }
+        
+        if(!product){
+            return res.status(401).json({error: "Product not found!"})
+        }
+        
+        console.log(product);
+        console.log(category);
+
+        const updated = Date.now();
+        
+        const productUpdated = await Product.updateOne(
+          { _id: productId },
+          {title,
+          description,
+          price,
+          categoryId,
+          updated
+          }
+        );
+    
+        return res.send(productUpdated);
+      }
+
 }
 
 export default ProductController;
