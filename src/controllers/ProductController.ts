@@ -17,5 +17,15 @@ class ProductController {
 
     return res.status(200).json(productFindId)
   }
+
+  async delete(req: Request, res: Response) {
+    const productRepository = getMongoRepository(Product)
+
+    const productId = req.params.id
+
+    await productRepository.delete(productId)
+
+    return res.status(204)
+  }
 }
 export const productController = new ProductController()
