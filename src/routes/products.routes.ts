@@ -5,5 +5,6 @@ import { productController } from '../controllers/ProductController'
 const router = Router()
 router.get('/products/:id', productController.findById)
 router.delete('/products/:id', productController.delete)
+router.get('/products', productController.index)
 
 export default router

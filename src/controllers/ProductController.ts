@@ -4,6 +4,20 @@ import { getMongoRepository } from 'typeorm'
 import { Product } from '../models/Product'
 
 class ProductController {
+  async index(req: Request, res: Response) {
+    const productRepository = getMongoRepository(Product)
+    const { cotegory, description } = req.query
+
+    const queryParams: any = {}
+
+    if (cotegory) queryParams.where = { cotegory: { $eq: cotegory } }
+    if (description) queryParams.where = { description: { $eq: description }, ...queryParams.where }
+
+    const allProducts = await productRepository.find(queryParams)
+
+    res.status(200).json(allProducts)
+  }
+
   async findById(req: Request, res: Response) {
     const productRepository = getMongoRepository(Product)
 
