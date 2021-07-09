@@ -4,6 +4,25 @@ import { getMongoRepository } from 'typeorm'
 import { Product } from '../models/Product'
 
 class ProductController {
+  async create(req: Request, res: Response) {
+    const productRepository = getMongoRepository(Product)
+    const { cotegory, description, price, title } = req.body
+
+    const productExists = await productRepository.findOne({
+      where: {
+        description: { $eq: description }
+      }
+    })
+
+    if (productExists) {
+      return res.status(409).json({ message: 'Product already exists' })
+    }
+
+    const productCreated = await productRepository.save({ cotegory, description, price, title })
+
+    return res.status(201).json(productCreated)
+  }
+
   async index(req: Request, res: Response) {
     const productRepository = getMongoRepository(Product)
     const { cotegory, description } = req.query
