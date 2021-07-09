@@ -1,0 +1,11 @@
+{
+  "type": "mongodb",
+  "useUnifiedTopology": true,
+  "host": "localhost",
+  "port": 27017,
+  "username": "admin",
+  "password": "admin",
+  "database": "admin",
+  "entities": ["src/models/*.ts", "./build/src/models/*.js"],
+  "log": true
+}
