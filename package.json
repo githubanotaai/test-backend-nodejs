@@ -1,0 +1,28 @@
+{
+  "name": "test-backend-nodejs",
+  "version": "1.0.0",
+  "description": "Aplicação para teste AnotaAI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbalzano/test-backend-nodejs.git"
+  },
+  "author": "Marcos Balzano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbalzano/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/mbalzano/test-backend-nodejs#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^6.0.0",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.13.3",
+    "nodemon": "^2.0.12"
+  }
+}
