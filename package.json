@@ -1,0 +1,32 @@
+{
+    "name": "test-backend-nodejs",
+    "version": "1.0.0",
+    "description": "basic crud operations",
+    "main": "app.js",
+    "scripts": {
+
+        "start": "node app.js",
+        "app": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oyugirachel/test-backend-nodejs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/oyugirachel/test-backend-nodejs/issues"
+    },
+    "homepage": "https://github.com/oyugirachel/test-backend-nodejs#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.1",
+        "express": "^4.17.2",
+        "mongoose": "^6.1.4",
+        "validation": "0.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
