@@ -1,40 +1,71 @@
-<h1>Backend Analyst Candidate Testing</h1>
+<h1>Creating a simple Product Api Catalog Using Nodejs,MongoDB and Express</h1>
 
-Hello dear developer, in this test we will analyze your general knowledge and even speed of development. Below we will explain everything that will be needed.
-Do not be alarmed, we do not expect everyone to be able to complete all tasks, this test is the same presented for candidates of all experience levels, so do what you can without worry.
+# NodeJs-ExpressJs-CRUD
+Developing Restful API with Node.js and MongoDB Atlas Cloud. 
+-CHANGE DB USERNAME AND PASS
 
-<strong>The challenge</strong>
+## Installation
 
-Your challenge is to develop an API, using Node.JS, for a product catalog management application. Thus, you must analyze and convert the user stories below into routes of an application.
- 
-<strong>User stories:</strong>
+Use the package manager npm.
 
-- As a user I would like to register a product so that I can have access to the data of this product in the future (Title, description, price, category)
-- I as a user would like to be able to associate and edit a product category;
-- As a user I would like to be able to access the list of all products;
-- As a user I would like to be able to filter products by name or category;
-- I as a user would like to be able to update the product data;
-- I as a user would like to be able to delete a product from my catalog;
- 
-<strong>Instructions</strong>
-- <strong>To start the test, <strong>fork</strong> this repository, create a branch with its full name and then and send us the link to the test performed (link to your repository) . If you just clone the repository you will not be able to push and then it will be more complicated to make the pull request.</strong>
-- The choice of libraries, databases, architecture, etc. is at your discretion.
-- Change the README file explaining what it takes to run your application.
-- Paste the branch name into the GUPY system and indicate the completion of the test
-- If you want you can leave us feedback regarding the test
+```bash
+npm install body-parser
+npm install express
+npm install mongodb
+npm install mongoose
+npm install validator
+```
 
- 
-<strong>Our analysis</strong>
-- Knowledge of Javascript, NodeJs, Express will be assessed for this position;
-- We'll look at how you structure the:
-  application layers;
-  outgoing calls,
-  environment variables,
-   cache,
-  unit tests,
-  logs;
-  error handling;
-  documentation.
-- Code organization, module separation, readability and comments.
-- Commit history.
-- The use of MongoDB is a differentiator
+## Usage
+
+```nodejs
+localhost:8082/products/create with keys.
+new CRUD operations will be added .
+
+```
+
+### Start mongo server
+First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. <strong>Preferably access from anywhere <strong>
+
+For more on mongo configuration option, visit [Mongodb docs](https://docs.mongodb.com/manual/reference/configuration-options/#configuration-file)
+Now run following command in command prompt/terminal(in root folder)
+```
+mongod --config=mongodb/mongo.conf
+```
+This will start mongo database server and it keeps running until you manually stops it. 
+
+
+### Start web server
+Now open another command prompt/terminal(in root folder) and run following command -
+```
+npm run app
+```
+This will start node server running on port 8082.
+
+### Testing services
+There are various tools to test restful services. Some popular ones are - **Postman, Advanced REST client(for chrome)** etc.
+OR
+To test whether server is working fine, just hit any GET type service in your browser. *Note - You can find relative service paths in app.js file*
+`Eg - http://localhost:8082/getProduct`
+Initially you don't have any record, you'll get an empty array in response. You can check it in network panel of browser.
+
+To try inserting new record, use following sample data.
+```
+[{"name":"Pizza"},{"name":"Casserole"}]
+```
+Since **insertProducts** service is currently working as bulk insertion, you have to send array of data.
+### Start mongo server
+First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running.
+For more on mongo configuration option, visit [Mongodb docs](https://docs.mongodb.com/manual/reference/configuration-options/#configuration-file)
+Now run following command in command prompt/terminal(in root folder)
+```
+mongod --config=mongodb/mongo.conf
+```
+This will start mongo database server and it keeps running until you manually stops it. 
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
