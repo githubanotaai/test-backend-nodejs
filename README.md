@@ -16,7 +16,7 @@ npm install mongoose
 npm install validator
 ```
 
-## Setup
+## Setup ##
 
 The API requires:
  * [Node.js](https://nodejs.org/en/download/)
@@ -48,11 +48,11 @@ npm install
 **5.**  **Important** Create a ```.env``` file and set ```jwtSecret``` to any secret phrase you want.
  
 
-# Testing the API routes.
+# Testing the API routes. #
 
 Since this is mostly an API with post and patch requests, testing will be done with [Postman](https://www.getpostman.com/)
 
-# Usage
+# Usage #
 
 
 ```nodejs
@@ -61,7 +61,7 @@ new CRUD operations will be added .
 
 ```
 
-# Start mongo server
+# Start mongo server #
 We will be using Atlas Mongo for this Api
 First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. **Preferably set to access from anywhere which is usually at 0.0.0**
 # Start mongo server #
@@ -75,14 +75,14 @@ mongod --config=mongodb/mongo.conf
 This will start mongo database server and it keeps running until you manually stops it. 
 
 
-# Start web server
+# Start web server #
 Now open another command prompt/terminal(in root folder) and run following command -
 ```
 npm run app
 ```
 This will start node server running on port 8082.
 
-# Testing services
+# Testing services #
 There are various tools to test restful services. Some popular ones are - **Postman, Advanced REST client(for chrome)** etc.
 OR
 To test whether server is working fine, just hit any GET type service in your browser. *Note - You can find relative service paths in app.js file*
