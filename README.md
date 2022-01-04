@@ -22,6 +22,8 @@ The API requires:
  * [Node.js](https://nodejs.org/en/download/)
  * [Express](https://expressjs.com/)
  * [Mocha](https://mochajs.org/) - For testing
+ 
+ [![Screenshot-from-2022-01-04-15-32-19.png](https://i.postimg.cc/JhTXF2wm/Screenshot-from-2022-01-04-15-32-19.png)](https://postimg.cc/7C2bGXYQ)
 
 To get up and running: 
 
