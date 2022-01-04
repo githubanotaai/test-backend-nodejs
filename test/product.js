@@ -1,7 +1,10 @@
 //During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
 
-const connectDB = require('./config/db');
+
+let mongoose = require("mongoose");
+
+
 let Product = require('../models/Product');
 
 //Require the dev-dependencies
@@ -9,6 +12,8 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let app = require('../app');
 let should = chai.should();
+
+mongoose.connect();
 
 
 chai.use(chaiHttp);
