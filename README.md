@@ -1,10 +1,10 @@
 <h1>Creating a simple Product Api Catalog Using Nodejs,MongoDB and Express</h1>
 
-# NodeJs-ExpressJs-CRUD
+# NodeJs-ExpressJs-CRUD #
 Developing Restful API with Node.js and MongoDB Atlas Cloud. 
 -CHANGE DB USERNAME AND PASS
 
-## Installation
+## Installation ##
 
 Use the package manager npm.
 
@@ -52,6 +52,7 @@ Since this is mostly an API with post and patch requests, testing will be done w
 
 # Usage
 
+
 ```nodejs
 localhost:8082/products/create with keys.
 new CRUD operations will be added .
@@ -61,6 +62,8 @@ new CRUD operations will be added .
 # Start mongo server
 We will be using Atlas Mongo for this Api
 First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. **Preferably set to access from anywhere which is usually at 0.0.0**
+# Start mongo server #
+First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. <strong>Preferably access from anywhere <strong>
 
 For more on mongo configuration option, visit [Mongodb docs](https://docs.mongodb.com/manual/reference/configuration-options/#configuration-file)
 Now run following command in command prompt/terminal(in root folder)
@@ -90,7 +93,11 @@ To try inserting new record, use following sample data.
 ```
 Since **insertProducts** service is currently working as bulk insertion, you have to send array of data.
 
-# Contributing
+
+
+
+
+## Contributing ##
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
