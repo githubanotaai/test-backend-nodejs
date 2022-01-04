@@ -2,6 +2,8 @@
 
 const express = require('express');
 const connectDB = require('./config/db');
+let product = require('./routes/api/products');
+let config = require('config');
 
 const app = express();
 
@@ -14,6 +16,17 @@ let options = {
 // Connect Database
 connectDB();
 
+// app.get('/', (req, res) => res.send('Hello world!'));
+app.get("/", (req, res) => res.json({ message: "Welcome to our restaurant!" }));
+
+
+app.route("/product")
+    .get(product.getProducts)
+    .post(product.postProduct);
+app.route("/product/:id")
+    .get(product.getProduct)
+    .delete(product.deleteProduct)
+    .put(product.updateProduct);
 
 const port = process.env.PORT || 8082;
 
