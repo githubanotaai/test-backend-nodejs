@@ -41,3 +41,32 @@ describe('Products', () => {
     });
 
 });
+/*
+ * Test the /POST route
+ */
+describe('/POST product', () => {
+    it('it should not POST a product without description field', (done) => {
+        let product = {
+            name: "Pizza",
+            quantity: 3,
+            price: 1954,
+            description: "Tasty and Delicious",
+            date_added: 2021,
+            vendor: "Pizza Inn",
+            updated_date: 2022
+
+        }
+        chai.request(app)
+            .post('/product')
+            .send(product)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('errors');
+                res.body.errors.should.have.property('description');
+                res.body.errors.pages.should.have.property('kind').eql('required');
+                done();
+            });
+    });
+
+});

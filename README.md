@@ -65,7 +65,7 @@ new CRUD operations will be added .
 We will be using Atlas Mongo for this Api
 First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. **Preferably set to access from anywhere which is usually at 0.0.0**
 # Start mongo server #
-First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. <strong>Preferably access from anywhere <strong>
+First of all, open mongodb/mongo.conf and set you local IP address against which you your mongo database server will be running. <strong>Preferably access from anywhere </strong>
 
 For more on mongo configuration option, visit [Mongodb docs](https://docs.mongodb.com/manual/reference/configuration-options/#configuration-file)
 Now run following command in command prompt/terminal(in root folder)
