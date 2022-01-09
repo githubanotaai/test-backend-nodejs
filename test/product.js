@@ -11,6 +11,7 @@ let Product = require('../models/Product');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let app = require('../app');
+let routes = require('./routes/api/products');
 let should = chai.should();
 
 mongoose.connect();

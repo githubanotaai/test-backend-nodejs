@@ -2,8 +2,9 @@
 
 const express = require('express');
 const connectDB = require('./config/db');
-let product = require('./routes/api/products');
 let config = require('config');
+const routes = require('./routes/api/products');
+
 
 const app = express();
 
@@ -18,15 +19,15 @@ connectDB();
 
 // app.get('/', (req, res) => res.send('Hello world!'));
 app.get("/", (req, res) => res.json({ message: "Welcome to our restaurant!" }));
+const productRoutes = require('./routers/api/product.js');
+app.use(productRoutes)
 
 
-app.route("/product")
-    .get(product.getProducts)
-    .post(product.postProduct);
-app.route("/product/:id")
-    .get(product.getProduct)
-    .delete(product.deleteProduct)
-    .put(product.updateProduct);
+// Handle errors.
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({ error: err });
+});
 
 const port = process.env.PORT || 8082;
 
