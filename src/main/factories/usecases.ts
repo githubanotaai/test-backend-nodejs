@@ -1,9 +1,17 @@
-import { MongoCategoryProductRepository, MongoUserRepository } from '@app/repositories/mongodb';
-import { GetUsersUserUseCase, RegisterCategoryProductUseCase, RegisterUserUseCase } from '@app/useCases';
+import { MongoProductRepository, MongoUserRepository } from '@app/repositories/mongodb';
+import {
+	GetProductsUseCase,
+	GetUsersUserUseCase,
+	RegisterCategoryProductUseCase,
+	RegisterProductUseCase,
+	RegisterUserUseCase,
+} from '@app/useCases';
 import {
 	IGetCategoryProductsUseCase,
+	IGetProductsUseCase,
 	IGetUsersUserUseCase,
 	IRegisterCategoryProductUseCase,
+	IRegisterProductUseCase,
 	IRegisterUserUseCase,
 } from '@app/useCases/contracts';
 import { GetCategoryProductsUseCase } from '@app/useCases/GetCategoryProductsUseCase';
@@ -18,12 +26,20 @@ class FactoryUseCases {
 		return new GetUsersUserUseCase(userRepository);
 	}
 	registerCategoryProduct(): IRegisterCategoryProductUseCase {
-		const categoryProductRepository = new MongoCategoryProductRepository();
-		return new RegisterCategoryProductUseCase(categoryProductRepository);
+		const productRepository = new MongoProductRepository();
+		return new RegisterCategoryProductUseCase(productRepository);
 	}
 	getCategoryProducts(): IGetCategoryProductsUseCase {
-		const categoryProductRepository = new MongoCategoryProductRepository();
-		return new GetCategoryProductsUseCase(categoryProductRepository);
+		const productRepository = new MongoProductRepository();
+		return new GetCategoryProductsUseCase(productRepository);
+	}
+	registerProduct(): IRegisterProductUseCase {
+		const productRepository = new MongoProductRepository();
+		return new RegisterProductUseCase(productRepository);
+	}
+	getProducts(): IGetProductsUseCase {
+		const productRepository = new MongoProductRepository();
+		return new GetProductsUseCase(productRepository);
 	}
 }
 

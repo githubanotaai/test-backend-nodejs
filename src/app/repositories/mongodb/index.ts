@@ -1,3 +1,3 @@
 export * from './MongoRepository';
 export * from './UserRepository';
-export * from './CategoryProductRepository';
+export * from './ProductRepository';

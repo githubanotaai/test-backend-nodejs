@@ -8,7 +8,7 @@ export class MongoUserRepository extends MongoRepository implements IUserReposit
 		const userModel = await User.create({ name, type });
 
 		return {
-			id: userModel.id,
+			_id: userModel.id,
 			name: userModel.name,
 			type: userModel.type,
 		};
@@ -19,7 +19,7 @@ export class MongoUserRepository extends MongoRepository implements IUserReposit
 
 		return userModel.map((item) => {
 			return {
-				id: item.id,
+				_id: item.id,
 				name: item.name,
 				type: item.type,
 			};

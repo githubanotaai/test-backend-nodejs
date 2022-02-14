@@ -2,7 +2,7 @@ import { TUserTypes } from '@main/contracts';
 import { IRepository } from './IRepository';
 
 export type TUserOutput = {
-	id: string;
+	_id: string;
 	name: string;
 	type: TUserTypes;
 };

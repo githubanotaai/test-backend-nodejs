@@ -8,10 +8,11 @@ export type IProductSchema = Document & {
 };
 
 type IProductCategorySchema = Document & {
-	id: string;
+	_id: string;
+	title: string;
 };
 
-const productCategorySchema = new Schema<IProductCategorySchema>({ id: 'string' });
+const productCategorySchema = new Schema<IProductCategorySchema>({ title: 'string' });
 
 const ProductSchema = new Schema<IProductSchema>(
 	{

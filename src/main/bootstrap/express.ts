@@ -14,14 +14,16 @@ bootstrap(() => {
 	app.use((error: any, req: Request, resp: Response, next: NextFunction) => {
 		// development
 		if (!config.app.production) {
-			return resp
-				.status(error.statusCode ?? 500)
-				.json(response.error({ message: error.message ?? 'Error Server', data: error }));
+			resp.status(error.statusCode ?? 500).json(
+				response.error({ message: error.message ?? 'Error Server', data: error })
+			);
+		} else {
+			// production
+			log.error(error.message ?? 'Error Server!', error);
+			resp.status(500).json(response.internalServerError());
 		}
 
-		// production
-		log.error(error.message ?? 'Error Server!', error);
-		return resp.status(500).json(response.internalServerError());
+		next();
 	});
 
 	// initt server

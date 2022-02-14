@@ -1,5 +1,5 @@
 import { IUserRepository } from '@app/repositories/contracts';
-import { IRegisterUserUseCase, TRegisterUserUseCase } from './contracts/RegisterUserUseCase';
+import { IRegisterUserUseCase, TRegisterUserUseCase } from './contracts';
 
 export class RegisterUserUseCase implements IRegisterUserUseCase {
 	constructor(private userRepository: IUserRepository) {}
