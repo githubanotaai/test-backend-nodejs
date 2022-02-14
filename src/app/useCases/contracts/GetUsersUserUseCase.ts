@@ -1,5 +1,5 @@
 import { TUserOutput } from '@app/repositories/contracts';
-import { IUseCase } from '..';
+import { IUseCase } from '.';
 
 export interface IGetUsersUserUseCase extends IUseCase<any, TGetUsersUserUseCase.Output> {}
 

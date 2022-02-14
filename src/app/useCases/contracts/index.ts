@@ -1,4 +1,5 @@
+export * from './IUseCase';
 export * from './RegisterUserUseCase';
-export * from './GetUsersUseCase';
+export * from './GetUsersUserUseCase';
 export * from './RegisterCategoryProductUseCase';
 export * from './GetCategoryProductsUseCase';

@@ -1,5 +1,5 @@
 import { IUserRepository } from '@app/repositories/contracts';
-import { IGetUsersUserUseCase, TGetUsersUserUseCase } from '.';
+import { IGetUsersUserUseCase, TGetUsersUserUseCase } from './contracts';
 
 export class GetUsersUserUseCase implements IGetUsersUserUseCase {
 	constructor(private userRepository: IUserRepository) {}

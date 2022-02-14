@@ -1,6 +1,6 @@
 import { TUserOutput } from '@app/repositories/contracts';
 import { TUserTypes } from '@main/contracts';
-import { IUseCase } from '..';
+import { IUseCase } from '.';
 
 export interface IRegisterUserUseCase extends IUseCase<TRegisterUserUseCase.Input, TRegisterUserUseCase.Output> {}
 
