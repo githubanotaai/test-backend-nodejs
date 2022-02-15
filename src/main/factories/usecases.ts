@@ -1,5 +1,6 @@
 import { MongoProductRepository, MongoUserRepository } from '@app/repositories/mongodb';
 import {
+	DeleteProductUseCase,
 	GetProductsUseCase,
 	GetUsersUserUseCase,
 	RegisterCategoryProductUseCase,
@@ -7,6 +8,7 @@ import {
 	RegisterUserUseCase,
 } from '@app/useCases';
 import {
+	IDeleteProductUseCase,
 	IGetCategoryProductsUseCase,
 	IGetProductsUseCase,
 	IGetUsersUserUseCase,
@@ -40,6 +42,10 @@ class FactoryUseCases {
 	getProducts(): IGetProductsUseCase {
 		const productRepository = new MongoProductRepository();
 		return new GetProductsUseCase(productRepository);
+	}
+	deleteProduct(): IDeleteProductUseCase {
+		const productRepository = new MongoProductRepository();
+		return new DeleteProductUseCase(productRepository);
 	}
 }
 

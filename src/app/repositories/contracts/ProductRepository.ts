@@ -39,7 +39,7 @@ export interface IProductRepository extends IRepository {
 
 	editProduct(id: string): Promise<TProductOutput>;
 
-	deleteProduct(id: string): Promise<void>;
+	deleteProduct(id: string): Promise<boolean>;
 
 	// CATEGORY PRODUCT
 

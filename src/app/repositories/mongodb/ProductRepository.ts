@@ -51,8 +51,13 @@ export class MongoProductRepository extends MongoRepository implements IProductR
 		throw new Error('Method not implemented.');
 	}
 
-	async deleteProduct(id: string): Promise<void> {
-		throw new Error('Method not implemented.');
+	async deleteProduct(id: string): Promise<boolean> {
+		try {
+			const model = await Product.findByIdAndDelete(id);
+			return model ? true : false;
+		} catch (error) {
+			return false;
+		}
 	}
 
 	//----------------------------------------------------------------
@@ -66,13 +71,10 @@ export class MongoProductRepository extends MongoRepository implements IProductR
 	}
 
 	async getCategorysInIds(ids: string[]): Promise<TCategoryProductOutput[] | null> {
-		try {
-			const model = await CategoryProduct.find({ _id: { $in: ids } }).exec();
+		const model = await CategoryProduct.find({ _id: { $in: ids } }).exec();
+		if (!model) return null;
 
-			return model.map((item) => this.mapCategoryProduct(item));
-		} catch (error) {
-			return null;
-		}
+		return model.map((item) => this.mapCategoryProduct(item));
 	}
 
 	async getCategoryByTitle(title: string): Promise<TCategoryProductOutput | null> {

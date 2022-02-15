@@ -27,7 +27,7 @@ export class RegisterProductController extends Controller {
 			categorys: request.data.categorys,
 		});
 
-		if (!result) return response.error({ message: 'Produto já cadastrado' });
+		if (!result) return response.error({ message: 'Erro ao cadastrar o produto' });
 
 		return response.ok({ data: result });
 	}
