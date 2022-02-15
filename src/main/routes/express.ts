@@ -1,5 +1,7 @@
 import { Request, Response, Router } from 'express';
 import {
+	DeleteProductController,
+	EditProductController,
 	GetCategoryProductsController,
 	GetProductsController,
 	GetUsersController,
@@ -9,7 +11,6 @@ import {
 } from '@app/controllers';
 import { expressAdapter } from '@main/adapters';
 import { response } from '@main/factories';
-import { DeleteProductController } from '@app/controllers/DeleteProductController';
 
 const routes = Router();
 
@@ -24,6 +25,7 @@ routes.get('/product/category', expressAdapter.controller(new GetCategoryProduct
 // Product
 routes.post('/product', expressAdapter.controller(new RegisterProductController()));
 routes.get('/product', expressAdapter.controller(new GetProductsController()));
+routes.put('/product/:id', expressAdapter.controller(new EditProductController()));
 routes.delete('/product/:id', expressAdapter.controller(new DeleteProductController()));
 
 routes.all('*', (req: Request, res: Response) => {

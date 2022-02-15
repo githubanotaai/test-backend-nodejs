@@ -47,8 +47,17 @@ export class MongoProductRepository extends MongoRepository implements IProductR
 		return this.mapProduct(model);
 	}
 
-	async editProduct(id: string): Promise<TProductOutput> {
-		throw new Error('Method not implemented.');
+	async editProduct(id: string, data: TRegisterProduct): Promise<TProductOutput | null> {
+		try {
+			let model = await Product.findOneAndUpdate({ _id: id }, data);
+			model = await Product.findById(id);
+
+			if (!model) return null;
+
+			return this.mapProduct(model);
+		} catch (error) {
+			return null;
+		}
 	}
 
 	async deleteProduct(id: string): Promise<boolean> {

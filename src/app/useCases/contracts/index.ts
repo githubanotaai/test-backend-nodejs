@@ -6,3 +6,4 @@ export * from './GetCategoryProductsUseCase';
 export * from './RegisterProductUseCase';
 export * from './GetProductsUseCase';
 export * from './DeleteProductUseCase';
+export * from './EditProductUseCase';
