@@ -7,7 +7,12 @@
 
 <h2>Install</h2>
 
-1. npm install
-2. Configure .env
-3. docker-compose up -d --build
-4. npm run dev
+1. Configure <code>.env</code> rename <code>.env.example</code>
+2. `npm install`
+3. `docker-compose up -d --build`
+4. `npm run dev`
+5. `npm run test`
+
+---
+
+-   [routes.json](routes.json) - Routes API

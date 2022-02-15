@@ -1,16 +1,16 @@
 import { Request, Response, Router } from 'express';
+
+import { expressAdapter } from '@main/adapters';
+import { response } from '@main/factories';
+import { GetUsersController, RegisterUserController } from '@app/controllers/User';
 import {
 	DeleteProductController,
 	EditProductController,
 	GetCategoryProductsController,
 	GetProductsController,
-	GetUsersController,
 	RegisterCategoryProductController,
 	RegisterProductController,
-	RegisterUserController,
-} from '@app/controllers';
-import { expressAdapter } from '@main/adapters';
-import { response } from '@main/factories';
+} from '@app/controllers/Product';
 
 const routes = Router();
 

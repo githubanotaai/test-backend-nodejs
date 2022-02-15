@@ -1,6 +1,6 @@
-import { Controller } from './Controller';
+import { Controller } from '../Controller';
 import { response, usecase } from '@main/factories';
-import { TRequest, TResponse } from './contracts';
+import { TRequest, TResponse } from '../contracts';
 import { RegisterUserSanitize, RegisterUserValidate } from '@app/validators';
 import { TUserTypes } from '@main/contracts';
 

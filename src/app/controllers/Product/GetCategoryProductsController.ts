@@ -1,6 +1,6 @@
-import { Controller } from './Controller';
+import { Controller } from '..';
 import { response, usecase } from '@main/factories';
-import { TRequest, TResponse } from './contracts';
+import { TRequest, TResponse } from '../contracts';
 
 export class GetCategoryProductsController extends Controller {
 	constructor() {

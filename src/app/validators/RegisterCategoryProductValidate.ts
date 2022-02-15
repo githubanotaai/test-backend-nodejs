@@ -1,5 +1,5 @@
 import { TRequest, TResponse } from '@app/controllers/contracts';
-import { TRegisterCategoryProductRequest } from '@app/controllers';
+import { TRegisterCategoryProductRequest } from '@app/controllers/Product';
 import { response } from '@main/factories';
 import { ISanitize, IValidate } from './contracts';
 
