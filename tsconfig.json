@@ -5,14 +5,9 @@
 		"lib": ["ES2021"],
 		"allowJs": true,
 		"outDir": "./dist",
-		"rootDir": "./src",
+		"rootDir": "./",
 		"removeComments": true,
 		"strict": true,
-		"baseUrl": "./",
-		"paths": {
-			"@app/*": ["./src/app/*"],
-			"@main/*": ["./src/main/*"]
-		},
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
@@ -20,7 +15,8 @@
 		"noEmitOnError": true,
 		"strictNullChecks": true,
 		"noImplicitAny": true,
-		"sourceMap": true
+		"sourceMap": true,
 	},
-	"include": ["src"]
+	"exclude": ["node_modules"],
+	"include": ["**/*"]
 }
