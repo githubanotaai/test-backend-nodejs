@@ -1,18 +1,6 @@
-<h2>Requirements:</h2>
+[![Node.JS CI/CD](https://github.com/sspangsberg/mongo_mongoose_nodejs_api/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/sspangsberg/mongo_mongoose_nodejs_api/actions/workflows/main.yml)
 
--   Nodejs 17.5
--   Npm
+# mongo_mongoose_nodejs_api
+Demo REST API made using the MEN stack (MongoDB, ExpressJS and NodeJS)
 
----
 
-<h2>Install</h2>
-
-1. Configure <code>.env</code> rename <code>.env.example</code>
-2. `npm install`
-3. `docker-compose up -d --build`
-4. `npm run dev`
-5. `npm run test`
-
----
-
--   [routes.json](routes.json) - Routes API
