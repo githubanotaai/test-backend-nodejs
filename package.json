@@ -1,0 +1,34 @@
+{
+  "name": "test-backend-nodejs",
+  "version": "1.0.0",
+  "description": "<h1>Backend Analyst Candidate Testing</h1>",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon  src/main",
+    "test": "jest --testEnvironment=node --verbose --forceExit --maxWorkers=1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuilhermePenna/test-backend-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuilhermePenna/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/GuilhermePenna/test-backend-nodejs#readme",
+  "dependencies": {
+    "@jest/globals": "^28.1.0",
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "express-validation": "^1.0.2",
+    "http": "^0.0.1-security",
+    "jest": "^28.1.0",
+    "joi": "^13.4.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.3.4",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.2.3"
+  }
+}

@@ -1,0 +1,29 @@
+version: "3"
+services:
+  catalog-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - "/app/node_modules"
+      - "./src:/app/src"
+    environment:
+      PORT: ${PORT}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${DB_USER}
+      PASSWORD: ${PASSWORD}
+  mongodb-catalog:
+    image: mongo:5.0
+    command: mongod --quiet --logpath /dev/null
+    ports:
+      - "27029:27017"
+    volumes:
+      - "/data/catalog-db:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
