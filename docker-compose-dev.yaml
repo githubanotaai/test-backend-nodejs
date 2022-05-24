@@ -16,7 +16,6 @@ services:
       DB_NAME: ${DB_TEST_NAME}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_USER: ${DB_USER}
-      PASSWORD: ${PASSWORD}
   mongodb-catalog-test:
     image: mongo:5.0
     command: mongod --quiet --logpath /dev/null
