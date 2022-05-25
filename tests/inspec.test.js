@@ -1,7 +1,8 @@
 const axios = require("axios");
 const { it, expect, test } = require("@jest/globals");
 jest.setTimeout(40000);
-jest.useFakeTimers();
+require("dotenv").config();
+const { PORT } = process.env;
 
 describe("Categories routes", () => {
   test("test status code from  post a new category", async () => {
@@ -13,7 +14,7 @@ describe("Categories routes", () => {
         isVegan: false,
       };
       const res = await axios.post(
-        "http://localhost:5000/categories",
+        `http://localhost:${PORT}/categories`,
         newCategory
       );
       expect(res.status).toEqual(200);
@@ -25,12 +26,12 @@ describe("Categories routes", () => {
   });
 
   test("test status code from /categories", async () => {
-    const res = await axios.get("http://localhost:5000/categories");
+    const res = await axios.get(`http://localhost:${PORT}/categories`);
     expect(res.status).toEqual(200);
   });
 
   test("test cotent type returned from /categories", async () => {
-    const res = await axios.get("http://localhost:5000/categories");
+    const res = await axios.get(`http://localhost:${PORT}/categories`);
     expect(res.headers["content-type"]).toEqual(
       expect.stringContaining("json")
     );
@@ -39,7 +40,7 @@ describe("Categories routes", () => {
   test("test status code from search for an existing category", async () => {
     const categoryName = "Ice-Cream"; // make shure the category name exists in the data base
     const res = await axios.get(
-      `http://localhost:5000/categories/search?name=${categoryName}`
+      `http://localhost:${PORT}/categories/search?name=${categoryName}`
     );
     expect(res.status).toEqual(200);
   });
@@ -47,7 +48,7 @@ describe("Categories routes", () => {
   test("test cotent type returned search for an existing category", async () => {
     const categoryName = "Ice-Cream"; // make shure the category name exists in the data base
     const res = await axios.get(
-      `http://localhost:5000/categories/search?name=${categoryName}`
+      `http://localhost:${PORT}/categories/search?name=${categoryName}`
     );
     expect(res.headers["content-type"]).toEqual(
       expect.stringContaining("json")
@@ -59,7 +60,7 @@ describe("Categories routes", () => {
       let errorStatuscode;
       const noneExistCategoryName = "dfsdfsdfasdf";
       const res = await axios.get(
-        `http://localhost:5000/categories/search?name=${noneExistCategoryName}`
+        `http://localhost:${PORT}/categories/search?name=${noneExistCategoryName}`
       );
     } catch (err) {
       errorStatuscode = err.response.status;
@@ -79,12 +80,12 @@ describe("Categories routes", () => {
       const CategoryName = "Ice-Cream";
 
       const findCategoryByName = await axios.get(
-        `http://localhost:5000/categories/search?name=${CategoryName}` //make shure to put a valid category name
+        `http://localhost:${PORT}/categories/search?name=${CategoryName}` //make shure to put a valid category name
       );
 
       const id = findCategoryByName.data._id;
       const res = await axios.put(
-        `http://localhost:5000/categories?id=${id}`,
+        `http://localhost:${PORT}/categories?id=${id}`,
         updatedCategory
       );
       expect(res.status).toEqual(200);
@@ -107,7 +108,7 @@ describe("Categories routes", () => {
         isVegan: false,
       };
       const res = await axios.post(
-        "http://localhost:5000/categories",
+        `http://localhost${PORT}/categories`,
         newCategory
       );
     } catch (err) {
@@ -130,7 +131,7 @@ describe("Categories routes", () => {
       // if you want to force error 400 , the id value must exist in the data base
 
       const res = await axios.put(
-        `http://localhost:5000/categories?id=${id}`,
+        `http://localhost:${PORT}/categories?id=${id}`,
         updatedCategory
       );
     } catch (err) {
@@ -145,7 +146,7 @@ describe("Categories routes", () => {
       const categoryName = "Sorvete";
       let statusCode;
       const res = await axios.delete(
-        `http://localhost:5000/categories?name=${categoryName}`
+        `http://localhost:${PORT}/categories?name=${categoryName}`
       );
 
       expect(res.status).toEqual(200);
@@ -160,7 +161,7 @@ describe("Categories routes", () => {
       const categoryName = "Sorvete"; // category name must be a none exist category or a category with associate products to force error 404 or 400
       let errorStatuscode;
       const res = await axios.delete(
-        `http://localhost:5000/categories?name=${categoryName}`
+        `http://localhost:${PORT}/categories?name=${categoryName}`
       );
     } catch (err) {
       // in case of error test error response to bad request(error 400),category not found(error 404) or duplicate key(error 500)
@@ -181,7 +182,7 @@ describe("Products routes", () => {
         category: "MilkShake",
       };
       const res = await axios.post(
-        "http://localhost:5000/products",
+        `http://localhost:${PORT}/products`,
         newProduct
       );
 
@@ -194,12 +195,12 @@ describe("Products routes", () => {
   });
 
   test("test status code from get products", async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`http://localhost:${PORT}/products`);
     expect(res.status).toEqual(200);
   });
 
   test("test cotent type returned from get products", async () => {
-    const res = await axios.get("http://localhost:5000/products");
+    const res = await axios.get(`http://localhost:${PORT}/products`);
     expect(res.headers["content-type"]).toEqual(
       expect.stringContaining("json")
     );
@@ -208,7 +209,7 @@ describe("Products routes", () => {
   test("test status code from search for an existing product", async () => {
     const productName = "Pote sorvete de chocolate"; // make shure the product name exists in the data base
     const res = await axios.get(
-      `http://localhost:5000/products/search?name=${productName}`
+      `http://localhost:${PORT}/products/search?name=${productName}`
     );
     expect(res.status).toEqual(200);
   });
@@ -216,7 +217,7 @@ describe("Products routes", () => {
   test("test cotent type returned search for an existing product", async () => {
     const productName = "Pote sorvete de chocolate"; // make shure the product name exists in the data base
     const res = await axios.get(
-      `http://localhost:5000/products/search?name=${productName}`
+      `http://localhost:${PORT}/products/search?name=${productName}`
     );
     expect(res.headers["content-type"]).toEqual(
       expect.stringContaining("json")
@@ -228,7 +229,7 @@ describe("Products routes", () => {
       let errorStatuscode;
       const noneExistProductName = "dfsdfsdfasdf";
       const res = await axios.get(
-        `http://localhost:5000/categories/search?name=${noneExistProductName}`
+        `http://localhost:${PORT}/categories/search?name=${noneExistProductName}`
       );
     } catch (err) {
       errorStatuscode = err.response.status;
@@ -248,7 +249,7 @@ describe("Products routes", () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/products`,
+        `http://localhost${PORT}/products`,
         updatedProduct
       );
       expect(res.status).toEqual(200);
@@ -272,7 +273,7 @@ describe("Products routes", () => {
         category: "Ice-Cream", // invalid category to force error 400
       };
       const res = await axios.post(
-        "http://localhost:5000/products",
+        `http://localhost:${PORT}/products`,
         newProduct
       );
     } catch (err) {
@@ -295,7 +296,7 @@ describe("Products routes", () => {
       };
 
       const res = await axios.put(
-        `http://localhost:5000/products`,
+        `http://localhost:${PORT}/products`,
         updatedProduct
       );
     } catch (err) {
@@ -310,7 +311,7 @@ describe("Products routes", () => {
       const productTitleorId = "Pote sorvete de morango";
       let statusCode;
       const res = await axios.delete(
-        `http://localhost:5000/products?id=${productTitleorId}`
+        `http://localhost:${PORT}/products?id=${productTitleorId}`
       );
 
       expect(res.status).toEqual(200);
@@ -325,7 +326,7 @@ describe("Products routes", () => {
       const productTitleorId = "Pote sorvete de morango"; //  must be a none exist product  to force error 404
       let errorStatuscode;
       const res = await axios.delete(
-        `http://localhost:5000/products?id=${categoryName}`
+        `http://localhost:${PORT}/products?id=${categoryName}`
       );
     } catch (err) {
       errorStatuscode = err?.response?.status || 500;
