@@ -20,6 +20,7 @@
   "dependencies": {
     "@jest/globals": "^28.1.0",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-validation": "^1.0.2",
     "http": "^0.0.1-security",
