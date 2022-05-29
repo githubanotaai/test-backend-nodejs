@@ -17,4 +17,10 @@ export class ProductService {
     productEntity.overrideEntityWithDTO(productDTO)
     return this.productRepository.save(productEntity)
   }
+
+  async deleteProduct(productDTO: ProductDTO): Promise<ProductEntity> {
+    const productEntity = await this.productRepository.findOneOrFail({ where: { id: productDTO.id } })
+    productEntity.overrideEntityWithDTO(productDTO)
+    return this.productRepository.remove(productEntity)
+  }
 }

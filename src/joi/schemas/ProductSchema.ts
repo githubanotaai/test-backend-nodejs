@@ -29,4 +29,5 @@ export class ProductSchema {
 
   static create = Joi.object(this.defaultObject)
   static update = Joi.object({ id: this.id.required().error((errors) => this.errorHandler(errors, 'id')), ...this.defaultObject })
+  static delete = Joi.object({ id: this.id.required().error((errors) => this.errorHandler(errors, 'id')) })
 }

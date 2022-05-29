@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post, Put, UseFilters } from '@nestjs/common'
+import { Body, Controller, Delete, HttpException, HttpStatus, Post, Put, UseFilters } from '@nestjs/common'
 import { ExceptionDTO } from 'src/classes/dtos/outs/ExceptionDTO'
 import { ExceptionReasonDTO } from 'src/classes/dtos/outs/ExceptionReasonDTO'
 import { ResponseDTO } from 'src/classes/dtos/outs/ResponseDTO'
@@ -40,13 +40,28 @@ export class ProductController {
     try {
       productEntity = await this.productService.updateProduct(body.data)
     } catch (error) {
-      Logger.error('Failed to create product', error)
+      Logger.error('Failed to update product', error)
       if (error?.message?.includes('ProductEntity')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Id', 'Invalid id informed'))
       if (error?.message?.includes('products_category_id_foreign_key')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Category id', 'Invalid category id informed'))
       if (error?.message?.includes('products_title_unique')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Title', 'Title already being used in another product'))
-      throw new HttpException(ExceptionDTO.withWarning('Failed to create product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
+      throw new HttpException(ExceptionDTO.withWarning('Failed to update product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
     }
 
-    return new ResponseDTO(HttpStatus.CREATED, 'Succesfully created product', ProductDTO.constructorByEntity(productEntity))
+    return new ResponseDTO(HttpStatus.OK, 'Succesfully update product', ProductDTO.constructorByEntity(productEntity))
+  }
+
+  @Delete()
+  async deleteProduct(@Body(ProductJoiPipe.delete) body: ProductSVC): Promise<ResponseDTO> {
+    let exceptionReasonDTOs: Array<ExceptionReasonDTO> = Array<ExceptionReasonDTO>()
+
+    try {
+      await this.productService.deleteProduct(body.data)
+    } catch (error) {
+      Logger.error('Failed to delete product', error)
+      if (error?.message?.includes('ProductEntity')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Id', 'Invalid id informed'))
+      throw new HttpException(ExceptionDTO.withWarning('Failed to delete product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
+    }
+
+    return new ResponseDTO(HttpStatus.OK, 'Succesfully deleted product', { id: body.data.id })
   }
 }
