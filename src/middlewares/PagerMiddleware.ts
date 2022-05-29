@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable, NestMiddleware, UseFilters } from '@nestjs/common'
 import { NextFunction, Request, Response } from 'express'
+import { ExceptionDTO } from 'src/classes/dtos/outs/ExceptionDTO'
+import { ExceptionReasonDTO } from 'src/classes/dtos/outs/ExceptionReasonDTO'
 import { Logger } from 'src/configurations/LoggerConfiguration'
-import { ExceptionDTO } from 'src/dtos/io/ExceptionDTO'
-import { ExceptionReasonDTO } from 'src/dtos/io/ExceptionReasonDTO'
 import { HttpExceptionFilter } from '../filters/HttpExceptionFilter'
 
 @Injectable()

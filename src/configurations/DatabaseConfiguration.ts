@@ -11,9 +11,7 @@ export const TypeormOptions: TypeOrmModuleOptions = {
   autoLoadEntities: true,
   logging: process.env.DEBUG_SQL === 'true' ? true : false,
   migrations: [process.env.TYPEORM_MIGRATIONS],
-  cli: {
-    migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
-  },
+  cli: { migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR },
 }
 
 export const DatabaseConnection: DynamicModule = TypeOrmModule.forRoot(TypeormOptions)

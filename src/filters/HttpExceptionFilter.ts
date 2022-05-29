@@ -1,9 +1,9 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common'
 import { Response } from 'express'
+import { ErrorDTO } from 'src/classes/dtos/outs/ErrorDTO'
+import { ExceptionDTO } from 'src/classes/dtos/outs/ExceptionDTO'
+import { ExceptionReasonDTO } from 'src/classes/dtos/outs/ExceptionReasonDTO'
 import { Logger } from 'src/configurations/LoggerConfiguration'
-import { ErrorDTO } from 'src/dtos/io/ErrorDTO'
-import { ExceptionDTO } from 'src/dtos/io/ExceptionDTO'
-import { ExceptionReasonDTO } from 'src/dtos/io/ExceptionReasonDTO'
 
 function parserJoiErrors(exception: HttpException): Array<ExceptionReasonDTO> {
   const parsedJoiErrors = Array<ExceptionReasonDTO>()
@@ -17,7 +17,7 @@ function parserJoiErrors(exception: HttpException): Array<ExceptionReasonDTO> {
 
   for (let error of errors) {
     const parsedError = error.split(';')
-    parsedJoiErrors.push(new ExceptionReasonDTO('Joi', `Failed field data validation${parsedError[1] ? ` duo to: ${parsedError[1]}` : ''}`))
+    parsedJoiErrors.push(new ExceptionReasonDTO('Failed field data validation', `Motive: ${parsedError[0].trimLeft()}${parsedError[1] ? ' ' + parsedError[1].trimLeft() : ''}`))
   }
   return parsedJoiErrors
 }
