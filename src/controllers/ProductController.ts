@@ -76,7 +76,6 @@ export class ProductController {
 
     try {
       Logger.info(`Attempting to delete product (id: ${body.data.id})`)
-
       await this.productService.deleteProduct(body.data)
     } catch (error) {
       Logger.error('Failed to delete product', error)
