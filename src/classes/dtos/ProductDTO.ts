@@ -10,6 +10,11 @@ export class ProductDTO {
     return new ProductDTO(productEntity.id, productEntity.title, productEntity.price, productEntity.categoryId)
   }
 
+  static constructorByEntities(productEntities: Array<ProductEntity>) {
+    const products = productEntities.map((productEntity) => new ProductDTO(productEntity.id, productEntity.title, productEntity.price, productEntity.categoryId))
+    return products
+  }
+
   constructor(id?: number, title?: string, price?: number, categoryId?: number) {
     if (id !== undefined) this.id = id
     if (title !== undefined) this.title = title

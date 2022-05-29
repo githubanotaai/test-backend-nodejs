@@ -20,10 +20,6 @@ export class Logger {
     this.log('[WARN ]', `${message} ~ Exception: ${JSON.stringify(error, this.jsonErrorReplacer)}`)
   }
 
-  public static trace(message: string) {
-    this.log('[TRACE]', message)
-  }
-
   public static error(message: string, error?: any) {
     this.log('[ERROR]', `${message} ~ Exception: ${JSON.stringify(error, this.jsonErrorReplacer)}`)
   }

@@ -4,6 +4,8 @@ export class ProductSchema {
   static id = Joi.number().min(0)
   static text = Joi.string().regex(/^[ 0-9A-Za-z]+$/)
   static numeric = Joi.number().precision(100)
+  static page = Joi.number().min(0).optional()
+  static pageSize = Joi.number().min(1).max(200).optional()
 
   static errorHandler(errors: any, field: string): any {
     const required = `${field} must be informed`
@@ -20,6 +22,11 @@ export class ProductSchema {
     })
     return errors
   }
+
+  static filters = Joi.object({
+    name: Joi.any().error((errors) => this.errorHandler(errors, 'id')),
+    categoryId: Joi.any().error((errors) => this.errorHandler(errors, 'category id')),
+  })
 
   static defaultObject = {
     title: this.text.required().error((errors) => this.errorHandler(errors, 'title')),

@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, HttpException, HttpStatus, Post, Put, UseFilters } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put, Query, Req, UseFilters } from '@nestjs/common'
 import { ExceptionDTO } from 'src/classes/dtos/outs/ExceptionDTO'
 import { ExceptionReasonDTO } from 'src/classes/dtos/outs/ExceptionReasonDTO'
+import { PagedDataDTO } from 'src/classes/dtos/outs/PagedDataDTO'
 import { ResponseDTO } from 'src/classes/dtos/outs/ResponseDTO'
 import { ProductDTO } from 'src/classes/dtos/ProductDTO'
 import { ProductSVC } from 'src/classes/svcs/ProductSVC'
@@ -15,12 +16,28 @@ import { ProductService } from 'src/services/ProductService'
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
+  @Get('/list')
+  async listProducts(@Req() request: any, @Query('title') title: string, @Query('categoryId') categoryId: number): Promise<ResponseDTO> {
+    let productEntities: Array<ProductEntity>, count: number
+    try {
+      Logger.info(`Listing ${request.query.pageSize} products in page ${request.query.pageSize}`)
+      ;[productEntities, count] = await this.productService.listProducts(title, categoryId, request.query.page, request.query.pageSize)
+    } catch (error) {
+      Logger.error('Failed to list products', error)
+      throw new HttpException(ExceptionDTO.withWarning('Failed to list products'), HttpStatus.BAD_REQUEST)
+    }
+
+    Logger.info(`Listed ${request.query.pageSize} products in page ${request.query.pageSize}`)
+    return new ResponseDTO(HttpStatus.OK, 'Succesfully listed products', { products: ProductDTO.constructorByEntities(productEntities), ...new PagedDataDTO(request.query.page, request.query.pageSize, count) })
+  }
+
   @Post()
   async createProduct(@Body(ProductJoiPipe.create) body: ProductSVC): Promise<ResponseDTO> {
     let exceptionReasonDTOs: Array<ExceptionReasonDTO> = Array<ExceptionReasonDTO>()
     let productEntity: ProductEntity
 
     try {
+      Logger.info(`Attempting to create new product called ${body.data.title}`)
       productEntity = await this.productService.createProduct(body.data)
     } catch (error) {
       Logger.error('Failed to create product', error)
@@ -29,6 +46,7 @@ export class ProductController {
       throw new HttpException(ExceptionDTO.withWarning('Failed to create product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
     }
 
+    Logger.info(`New product created (id: ${productEntity.id}) in category ${productEntity.categoryId}`)
     return new ResponseDTO(HttpStatus.CREATED, 'Succesfully created product', ProductDTO.constructorByEntity(productEntity))
   }
 
@@ -38,6 +56,7 @@ export class ProductController {
     let productEntity: ProductEntity
 
     try {
+      Logger.info(`Attempting to update existing product (id: ${body.data.id})`)
       productEntity = await this.productService.updateProduct(body.data)
     } catch (error) {
       Logger.error('Failed to update product', error)
@@ -47,6 +66,7 @@ export class ProductController {
       throw new HttpException(ExceptionDTO.withWarning('Failed to update product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
     }
 
+    Logger.info(`Product (id: ${productEntity.id}) updated with body ${JSON.stringify(body.data, null)}`)
     return new ResponseDTO(HttpStatus.OK, 'Succesfully update product', ProductDTO.constructorByEntity(productEntity))
   }
 
@@ -55,6 +75,8 @@ export class ProductController {
     let exceptionReasonDTOs: Array<ExceptionReasonDTO> = Array<ExceptionReasonDTO>()
 
     try {
+      Logger.info(`Attempting to delete product (id: ${body.data.id})`)
+
       await this.productService.deleteProduct(body.data)
     } catch (error) {
       Logger.error('Failed to delete product', error)
@@ -62,6 +84,7 @@ export class ProductController {
       throw new HttpException(ExceptionDTO.withWarning('Failed to delete product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
     }
 
+    Logger.info(`Product (id: ${body.data.id}) deleted`)
     return new ResponseDTO(HttpStatus.OK, 'Succesfully deleted product', { id: body.data.id })
   }
 }
