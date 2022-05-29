@@ -1,7 +1,7 @@
 import { DynamicModule } from '@nestjs/common'
-import { TypeOrmModule } from '@nestjs/typeorm'
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm'
 
-export const DatabaseConnection: DynamicModule = TypeOrmModule.forRoot({
+export const TypeormOptions: TypeOrmModuleOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -10,4 +10,10 @@ export const DatabaseConnection: DynamicModule = TypeOrmModule.forRoot({
   database: process.env.DB_NAME,
   autoLoadEntities: true,
   logging: process.env.DEBUG_SQL === 'true' ? true : false,
-})
+  migrations: [process.env.TYPEORM_MIGRATIONS],
+  cli: {
+    migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
+  },
+}
+
+export const DatabaseConnection: DynamicModule = TypeOrmModule.forRoot(TypeormOptions)
