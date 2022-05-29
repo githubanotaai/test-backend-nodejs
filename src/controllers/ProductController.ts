@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post, UseFilters } from '@nestjs/common'
+import { Body, Controller, HttpException, HttpStatus, Post, Put, UseFilters } from '@nestjs/common'
 import { ExceptionDTO } from 'src/classes/dtos/outs/ExceptionDTO'
 import { ExceptionReasonDTO } from 'src/classes/dtos/outs/ExceptionReasonDTO'
 import { ResponseDTO } from 'src/classes/dtos/outs/ResponseDTO'
@@ -24,6 +24,24 @@ export class ProductController {
       productEntity = await this.productService.createProduct(body.data)
     } catch (error) {
       Logger.error('Failed to create product', error)
+      if (error?.message?.includes('products_category_id_foreign_key')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Category id', 'Invalid category id informed'))
+      if (error?.message?.includes('products_title_unique')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Title', 'Title already being used in another product'))
+      throw new HttpException(ExceptionDTO.withWarning('Failed to create product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)
+    }
+
+    return new ResponseDTO(HttpStatus.CREATED, 'Succesfully created product', ProductDTO.constructorByEntity(productEntity))
+  }
+
+  @Put()
+  async updateProduct(@Body(ProductJoiPipe.update) body: ProductSVC): Promise<ResponseDTO> {
+    let exceptionReasonDTOs: Array<ExceptionReasonDTO> = Array<ExceptionReasonDTO>()
+    let productEntity: ProductEntity
+
+    try {
+      productEntity = await this.productService.updateProduct(body.data)
+    } catch (error) {
+      Logger.error('Failed to create product', error)
+      if (error?.message?.includes('ProductEntity')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Id', 'Invalid id informed'))
       if (error?.message?.includes('products_category_id_foreign_key')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Category id', 'Invalid category id informed'))
       if (error?.message?.includes('products_title_unique')) exceptionReasonDTOs.push(new ExceptionReasonDTO('Title', 'Title already being used in another product'))
       throw new HttpException(ExceptionDTO.withWarning('Failed to create product', exceptionReasonDTOs), HttpStatus.BAD_REQUEST)

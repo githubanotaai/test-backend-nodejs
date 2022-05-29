@@ -21,6 +21,13 @@ export class ProductEntity {
   @UpdateDateColumn({ type: 'timestamp with time zone', default: () => 'CURRENT_TIMESTAMP', update: true, name: 'updated_at' })
   updatedAt: string
 
+  overrideEntityWithDTO(productDTO: ProductDTO) {
+    if (productDTO.categoryId !== undefined) this.categoryId = productDTO.categoryId
+    if (productDTO.id !== undefined) this.id = productDTO.id
+    if (productDTO.price !== undefined) this.price = Number(productDTO.price)
+    if (productDTO.title !== undefined) this.title = productDTO.title
+  }
+
   static constructorByDTO(productDTO: ProductDTO) {
     return new ProductEntity(productDTO.title, Number(productDTO.price), productDTO.categoryId, productDTO.id)
   }

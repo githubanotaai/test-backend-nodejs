@@ -6,5 +6,6 @@ import { ProductDTO } from '../dtos/ProductDTO'
 @JoiSchemaOptions({ allowUnknown: false })
 export class ProductSVC {
   @JoiSchema([ProductJoiGroup.create], ProductSchema.create.required())
+  @JoiSchema([ProductJoiGroup.update], ProductSchema.update.required())
   data: ProductDTO
 }

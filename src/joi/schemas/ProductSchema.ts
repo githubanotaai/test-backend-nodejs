@@ -21,9 +21,12 @@ export class ProductSchema {
     return errors
   }
 
-  static create = Joi.object({
+  static defaultObject = {
     title: this.text.required().error((errors) => this.errorHandler(errors, 'title')),
     price: this.numeric.required().error((errors) => this.errorHandler(errors, 'price')),
     categoryId: this.id.required().error((errors) => this.errorHandler(errors, 'categoryId')),
-  })
+  }
+
+  static create = Joi.object(this.defaultObject)
+  static update = Joi.object({ id: this.id.required().error((errors) => this.errorHandler(errors, 'id')), ...this.defaultObject })
 }

@@ -8,11 +8,13 @@ import { ProductRepository } from 'src/repositories/ProductRepository'
 export class ProductService {
   constructor(@InjectRepository(ProductEntity) private readonly productRepository: ProductRepository) {}
 
-  async createProduct(product: ProductDTO): Promise<ProductEntity> {
-    return this.productRepository.save(ProductEntity.constructorByDTO(product))
+  async createProduct(productDTO: ProductDTO): Promise<ProductEntity> {
+    return this.productRepository.save(ProductEntity.constructorByDTO(productDTO))
   }
 
-  async updateProduct(product: ProductDTO): Promise<ProductEntity> {
-    return this.productRepository.save(ProductEntity.constructorByDTO(product))
+  async updateProduct(productDTO: ProductDTO): Promise<ProductEntity> {
+    const productEntity = await this.productRepository.findOneOrFail({ where: { id: productDTO.id } })
+    productEntity.overrideEntityWithDTO(productDTO)
+    return this.productRepository.save(productEntity)
   }
 }
