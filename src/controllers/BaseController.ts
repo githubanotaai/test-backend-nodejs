@@ -6,4 +6,9 @@ export class BaseController {
   healthCheck(): string {
     return 'Healthy!'
   }
+
+  @Get('test')
+  test(): string {
+    return 'Healthy!'
+  }
 }
