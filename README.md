@@ -1,40 +1,27 @@
 <h1>Backend Analyst Candidate Testing</h1>
+<h2>Luan Bodner do Rosário</h2>
 
-Hello dear developer, in this test we will analyze your general knowledge and even speed of development. Below we will explain everything that will be needed.
-Do not be alarmed, we do not expect everyone to be able to complete all tasks, this test is the same presented for candidates of all experience levels, so do what you can without worry.
+<strong>Running the project</strong>
 
-<strong>The challenge</strong>
+- Enter the project folder;
+- Switch to branch <i>feat/products</i>;
+- Install dependencies (<i>yarn install</i> or equivalent);
+- Stop all services running on port 5432 (if it's the postgres database run <i>sudo service postgresql stop</i> );
+- Run the project with the command <i>yarn docker-run</i>;
+- Run the necessary migrations with <i>yarn migrate</i>.
 
-Your challenge is to develop an API, using Node.JS, for a product catalog management application. Thus, you must analyze and convert the user stories below into routes of an application.
- 
-<strong>User stories:</strong>
+<strong>Running the tests</strong>
 
-- As a user I would like to register a product so that I can have access to the data of this product in the future (Title, description, price, category)
-- I as a user would like to be able to associate and edit a product category;
-- As a user I would like to be able to access the list of all products;
-- As a user I would like to be able to filter products by name or category;
-- I as a user would like to be able to update the product data;
-- I as a user would like to be able to delete a product from my catalog;
- 
-<strong>Instructions</strong>
-- <strong>To start the test, <strong>fork</strong> this repository, create a branch with its full name and then and send us the link to the test performed (link to your repository) . If you just clone the repository you will not be able to push and then it will be more complicated to make the pull request.</strong>
-- The choice of libraries, databases, architecture, etc. is at your discretion.
-- Change the README file explaining what it takes to run your application.
-- Paste the branch name into the GUPY system and indicate the completion of the test
-- If you want you can leave us feedback regarding the test
+- Enter the project folder;
+- Switch to branch <i>feat/products</i>;
+- Install dependencies (<i>yarn install</i> or equivalent);
+- Check the environment file for the database connection specification. Ideally, these tests run on the development(local) environment;
+- Create a local database to match and run <i>yarn migrate</i>;
+- Run the jest environment with <i>yarn test</i>.
 
- 
-<strong>Our analysis</strong>
-- Knowledge of Javascript, NodeJs, Express will be assessed for this position;
-- We'll look at how you structure the:
-  application layers;
-  outgoing calls,
-  environment variables,
-   cache,
-  unit tests,
-  logs;
-  error handling;
-  documentation.
-- Code organization, module separation, readability and comments.
-- Commit history.
-- The use of MongoDB is a differentiator
+The API documentation can be found clicking this <a href='https://documenter.getpostman.com/view/5612863/Uz5CLxjG'>link</a>.
+
+<strong>Observations</strong>
+
+- Environment files (.env) are not supposed to be versioned, but i left it here just to make it easier to run the tests and create the database migrations in other machines.
+- There are 3 default categories created just so they can be potentially used for manual tests and the jest environment. The following ids represent valid categories: 1,2 and 3.
