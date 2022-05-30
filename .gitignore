@@ -28,7 +28,6 @@ lerna-debug.log*
 *.sublime-workspace
 .husky
 # Temporary Files
-.env
 documentation.txt
 .yarnrc
 .npmrc
