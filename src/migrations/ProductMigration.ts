@@ -20,7 +20,5 @@ export class ProductMigration1653835471661 implements MigrationInterface {
     );`)
   }
 
-  async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE public.products;`)
-  }
+  async down(queryRunner: QueryRunner): Promise<void> {}
 }
