@@ -6,4 +6,4 @@ WORKDIR /usr/src
 
 EXPOSE 3000
 
-CMD yarn migrate && node dist/Main
+CMD node dist/Main
