@@ -6,5 +6,5 @@ const init = async () => {
     console.log(`[INFO] Listening on port ${port}`);
   });
 };
-
+// adicionando comentario
 init();
