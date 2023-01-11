@@ -1,0 +1,31 @@
+{
+  "name": "test-backend-nodejs",
+  "version": "1.0.0",
+  "description": "<h1>Backend Analyst Candidate Testing</h1>",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lebackrobot/test-backend-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lebackrobot/test-backend-nodejs/issues"
+  },
+  "homepage": "https://github.com/Lebackrobot/test-backend-nodejs#readme",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "express": "^4.18.2",
+    "mocha": "^10.2.0",
+    "mongoose": "^6.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
