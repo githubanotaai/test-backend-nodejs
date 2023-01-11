@@ -77,8 +77,24 @@ const categorySchema = new mongoose.Schema({
 
 <h3>Routes</h3>
 
-Method |  EndPoint | Returns
-:---------: | :------ | :-------:
-<strong>GET</strong> | /products | products: Array 
-<strong>GET</strong> | /products/category/:id | product: Object
-<strong>POST</strong>| /product/category/     | message: Object
+Product Routes:
+
+Method |  EndPoint | Body Params |Returns
+:---------: | :------ | :-------: | :--------:
+<strong>POST</strong>| /products |   product  | messag : Object
+<strong>PUT<strong>  | /products/:id |   products | message : Object
+<strong>GET</strong> | /products | - |products: Array 
+<strong>GET</strong> | /product/:id | - |product: Object
+<strong>GET</strong> | /products/category/:id | - | products: Array
+<strong>GET</strong>| /product/search?title=queryParam | - | message: Object
+<strong>DELETE</strong> | /products/:id | - | message: Object
+
+Categorie Routes:
+
+Method |  EndPoint | Body Params |Returns
+:---------: | :------ | :-------: | :--------:
+<strong>POST</strong>| /categories |   category  | message: Object
+<strong>PUT<strong>  | /categories/:id |   category | message: Object
+<strong>GET</strong> | /categories | - |categories: Array 
+<strong>GET</strong> | /categories/:id | - |categorie: Object
+<strong>DELETE</strong> | /categories/:id | - | message: Object
