@@ -31,10 +31,23 @@ class ProductController {
     }
 
     static searchProductsByCategory = (require, response) => {
-        const categoryTitle = require.query.categoryTitle
+        const category = require.params.id 
 
+        Product.find({ 'category': category }, (err, products) => {
+            if (!err) {
+                response.status(200).send(products)
+            }
 
-        Product.find({ 'category.title': categoryTitle}, (err, products) => {
+            else {
+                response.status(400).send({ message: err.message })
+            }
+        })
+    }
+
+    static searchProductByTitle = (require, response) => {
+        const title = require.query.title
+
+        Product.find({ 'title': title}, (err, products) => {
             if (!err) {
                 response.status(200).send(products)
             }
