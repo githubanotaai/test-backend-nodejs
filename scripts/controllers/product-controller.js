@@ -17,34 +17,40 @@ class ProductController {
     }
 
     static getProducts = (require, response) => {
-        if (require.query.price) {
-            Product.find({ price: { $lte: price } }, (err, products) => {
+        Product.find()
+            .populate('category')
+            .exec((err, products) => {
                 if(!err) {
                     response.status(200).send(products)
                 }
 
                 else {
-                    response.status(500).send({message: err.message})
+                    response.status(400).send({message: err.message})
                 }
             })
-        }
-        Product.find((err, products) => {
-            if(!err) {
+    }
+
+    static searchProductsByCategory = (require, response) => {
+        const categoryTitle = require.query.categoryTitle
+
+
+        Product.find({ 'category.title': categoryTitle}, (err, products) => {
+            if (!err) {
                 response.status(200).send(products)
             }
 
             else {
-                response.status(400).send({message: err.message})
+                response.status(400).send({ message: err.message })
             }
-         })
+        })
     }
 
     static getProduct = (require, response) => {
-        const id = require.body.id
+        const id = require.params.id
         
-        Product.findById((err, products)=> {
+        Product.findById(id, (err, product)=> {
                 if(!err) {
-                    response.status(200).send(products)
+                    response.status(200).send(product)
                 }
 
                 else {
@@ -55,7 +61,7 @@ class ProductController {
     }
 
     static updateProduct = (require, response) => {
-        const id = require.body.id 
+        const id = require.params.id 
 
         Product.findByIdAndUpdate(id, {$set: require.body}, err => {
             if(!err) {
@@ -69,16 +75,16 @@ class ProductController {
     }
 
     static deleteProduct = (require, response) => {
-        const id = req.params.id
+        const id = require.params.id
 
         Product.findByIdAndDelete(id, err => {
 
             if(!err) {
-                response.status(500).send({message: err.message})
+                response.status(200).send({ message: 'Successfully delete product' })
             }
 
             else {
-                response.status(200).send({messagea: 'Successfully delete product'})
+                response.status(500).send({messagea: err.message})
             }
         })
     }
