@@ -96,5 +96,5 @@ Method |  EndPoint | Body Params |Returns
 <strong>POST</strong>| /categories |   category  | message: Object
 <strong>PUT<strong>  | /categories/:id |   category | message: Object
 <strong>GET</strong> | /categories | - |categories: Array 
-<strong>GET</strong> | /categories/:id | - |categorie: Object
+<strong>GET</strong> | /categories/:id | - |category: Object
 <strong>DELETE</strong> | /categories/:id | - | message: Object
