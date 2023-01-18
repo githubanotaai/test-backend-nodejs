@@ -1,4 +1,3 @@
-import Category from './../models/category-model.js'
 import CategoryService from './../services/category-services.js'
 
 class CategoryController {
