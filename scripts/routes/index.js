@@ -9,8 +9,7 @@ const routes = app => {
 
     app
         .use(express.json())
-        .use(productRouter)
-        .use(categoryRouter)
+        .use(productRouter, categoryRouter)
 }
 
 export { routes }
