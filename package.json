@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha scripts/test/product-service.spec.js",
     "dev": "nodemon server.js"
   },
   "repository": {
@@ -21,11 +21,13 @@
   "homepage": "https://github.com/Lebackrobot/test-backend-nodejs#readme",
   "dependencies": {
     "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "chai-json-schema": "^1.5.1",
     "express": "^4.18.2",
-    "mocha": "^10.2.0",
     "mongoose": "^6.8.3"
   },
   "devDependencies": {
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.20"
   }
 }

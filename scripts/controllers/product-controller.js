@@ -59,16 +59,14 @@ class ProductController {
     }
 
     static updateProduct = (require, response) => {
-        const id = require.params.id 
 
-        Product.findByIdAndUpdate(id, {$set: require.body}, err => {
-            if(!err) {
-                response.status(200).send({message: 'Successfully update product'})
-            }
+        ProductService.updateProduct(require) 
+        .then( success => {
+            response.status(200).send({message: 'Successfully update product'})
+        })
 
-            else {
-                response.status(500).send({message: err.message})
-            }
+        .catch(err => {
+            response.status(500).send({message: err.message})
         })
     }
 

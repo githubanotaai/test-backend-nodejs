@@ -20,6 +20,11 @@ class ProductService {
     static searchProductByTitle = require => {
         return Product.find({title: require.query.title}).lean()
     }
+    
+
+    static updateProduct = require => {
+        return Product.findByIdAndUpdate(require.params.id, {$set: require.body})
+    }
 
     static deleteProduct = require => {
         return Product.findByIdAndDelete(require.params.id)
