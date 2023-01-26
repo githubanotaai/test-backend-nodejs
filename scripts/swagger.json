@@ -18,7 +18,11 @@
                                     "category": {"type": "_id"}
                                 },
                                 "example": {
-                                    "title": "Doces"
+                                    "title": "Doritos",
+                                    "description": "Salgadinho caro",
+                                    "price": 15.99,
+                                    "category": 567
+                                                         
                                 }
                             }
                         }
