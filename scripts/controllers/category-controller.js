@@ -43,7 +43,7 @@ class CategoryController {
 
         CategoryService.updateCategory(require)
         .then(success => {
-            response.status(200).send({ message: "Successfully delete category" })
+            response.status(200).send({ message: "Successfully update category" })
         })
 
         .catch(err => {
