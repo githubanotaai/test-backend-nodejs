@@ -1,0 +1,79 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/products": {
+            "post":  {
+                "tags": ["products"],
+                "summary": "Create Product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {"type": "string"}
+                                },
+                                "example": {
+                                    "title": "Doces"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created", 
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully create product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Products"],
+                "summary": "List all products",
+                "responses": {
+                    "200": {
+                        "description": "List all products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "Array",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "ID"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "categories": [
+                                        {"_id": 123, "title": "Doces"},
+                                        {"_id": 456, "title": "Salgados"},
+                                        {"_id": 567, "title": "Sashimi"}
+                                    ]
+                                }                                
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
