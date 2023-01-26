@@ -43,7 +43,7 @@
                 }
             },
             "get": {
-                "tags": ["Products"],
+                "tags": ["products"],
                 "summary": "List all products",
                 "responses": {
                     "200": {
@@ -69,6 +69,76 @@
                                     ]
                                 }                                
 
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Update Product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "title": "Doces"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully update product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Update Product",
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully delete product"
+                                    }
+                                }
                             }
                         }
                     }
