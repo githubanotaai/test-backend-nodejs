@@ -1,0 +1,322 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/products": {
+            "post":  {
+                "tags": ["products"],
+                "summary": "Create Product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {"type": "string"},
+                                    "description": {"type": "string"},
+                                    "price": {"type": "number"},
+                                    "category": {"type": "_id"}
+                                },
+                                "example": {
+                                    "title": "Doritos",
+                                    "description": "Salgadinho caro",
+                                    "price": 15.99,
+                                    "category": 567
+                                                         
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created", 
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully create product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["products"],
+                "summary": "List all products",
+                "responses": {
+                    "200": {
+                        "description": "List all products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "Array",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": "number"
+                                        },
+                                        "category": {
+                                            "type": "_id"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "categories": [
+                                        {"_id": "123", "title": "Doritos", "description": "Salgadinho caro", "price": 15.99, "category": "567" },
+                                        {"_id": "123", "title": "Coxinha", "description": "frango e queijo", "price": 5.00, "category": "789" }
+                                    ]
+                                }                                
+
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Update Product",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "title": "Doces"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully update product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Update Product",
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully delete product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/categories": {
+            "post": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Create Category",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "title": "Doces"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully create product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "List all categories",
+                "responses": {
+                    "200": {
+                        "description": "List all categories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "Array",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "_id"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "categories": [
+                                        {
+                                            "_id": 123,
+                                            "title": "Doces"
+                                        },
+                                        {
+                                            "_id": 456,
+                                            "title": "Salgados"
+                                        },
+                                        {
+                                            "_id": 567,
+                                            "title": "Sashimi"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Update Category",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "title": "Doces"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully update product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Update Category",
+                "responses": {
+                    "200": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "types": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "message": "Successfully delete product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+    

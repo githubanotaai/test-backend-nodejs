@@ -38,3 +38,63 @@ Your challenge is to develop an API, using Node.JS, for a product catalog manage
 - Code organization, module separation, readability and comments.
 - Commit history.
 - The use of MongoDB is a differentiator
+
+<h1>Code Documentation</h1>
+Hello, dear. Below is the usage documentation.
+
+After downloading the project,it is necessary to install all project dependencies with npm
+
+```console
+anotaai@pc:~$ npm install
+```
+Now it is possible to run up the server with the command
+
+```console
+anotaai@pc:~$ npm run dev
+```
+
+<h2>About API</h2>
+Here is some technical information about modeling the problem
+
+<h3>Schemas</h3> 
+two schemes were models:
+
+- Products: mproducts has categories reference
+```javascript 
+    id: {type: String, required: false},
+    category: {type: mongoose.Schema.Types.ObjectId, ref: 'category', required: true},
+    title: {type: String, required: true},
+    description: {type: String, required: true},
+    price: {type: Number, required: true}
+```
+- Categories:
+```javascript
+const categorySchema = new mongoose.Schema({
+    id: {type: String, required: false}, 
+    title: {type: String, require: true}
+})
+```
+
+<h3>Routes</h3>
+
+Product Routes:
+
+Method |  EndPoint | Body Params |Returns
+:---------: | :------ | :-------: | :--------:
+<strong>POST</strong>| /products |   product  | messag : Object
+<strong>PUT<strong>  | /products/:id |   products | message : Object
+<strong>GET</strong> | /products | - |products: Array 
+<strong>GET</strong> | /product/:id | - |product: Object
+<strong>GET</strong> | /products/category/:id | - | products: Array
+<strong>GET</strong>| /product/search?title=queryParam | - | message: Object
+<strong>DELETE</strong> | /products/:id | - | message: Object
+
+Categorie Routes:
+
+Method |  EndPoint | Body Params |Returns
+:---------: | :------ | :-------: | :--------:
+<strong>POST</strong>| /categories |   category  | message: Object
+<strong>PUT<strong>  | /categories/:id |   category | message: Object
+<strong>GET</strong> | /categories | - |categories: Array 
+<strong>GET</strong> | /categories/:id | - |category: Object
+<strong>DELETE</strong> | /categories/:id | - | message: Object
