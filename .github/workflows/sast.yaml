@@ -14,7 +14,7 @@ jobs:
       HUSKYCI_CLIENT_API_ADDR: "${{ secrets.HUSKYCI_CLIENT_API_ADDR }}"
       HUSKYCI_CLIENT_API_USE_HTTPS: false
       HUSKYCI_CLIENT_REPO_URL: git@github.com:${{ github.repository }}.git
-      HUSKYCI_CLIENT_REPO_BRANCH: "master"
+      HUSKYCI_CLIENT_REPO_BRANCH: "main"
       HUSKYCI_CLIENT_TOKEN: "${{ secrets.HUSKYCI_CLIENT_TOKEN }}"
       HUSKYCI_CLIENT_URL: "git@github.com/githubanotaai/huskyci-api.git"
 
